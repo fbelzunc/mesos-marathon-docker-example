@@ -38,7 +38,6 @@ services:
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup
       - /var/run/docker.sock:/run/docker.sock
-      - /Users/fbelzunc/caca-test/my-volume:/bin/docker
     command: --resources='ports:[3000-9990,31000-32000]'
 
   marathon:

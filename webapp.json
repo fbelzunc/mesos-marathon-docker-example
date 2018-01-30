@@ -13,7 +13,7 @@
       ]
     }
   },
-  "cmd": "/bin/bash -c 'echo \"Hello world\" > hello; python3 -m http.server $PORT0'",
+  "cmd": "/bin/bash -c 'echo \"Hello world\" > index.html; python3 -m http.server $PORT0'",
   "healthChecks": [
     {
       "protocol": "HTTP",
