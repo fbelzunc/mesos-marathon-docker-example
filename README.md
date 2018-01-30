@@ -20,8 +20,8 @@ export DOCKER_IP="$(docker run --rm -t --net=host alpine ip addr show docker0 | 
 ```bash
 docker-compose up -d
 
-open http://$DOCKER_IP:5050
-open http://$DOCKER_IP:8080
+open http://localhost:5050
+open http://localhost:8080
 ```
 
 ## Deploy webapp, linkerd, and linkerd-viz
