@@ -22,7 +22,7 @@ Use special Mac-only DNS name `docker.for.mac.localhost` which will resolve to t
 ```bash
 export DOCKER_IP=docker.for.mac.localhost
 ```
-**Note**: Since 17.12 onwards the recommendation is to connect to the special Mac-only DNS name `docker.for.mac.host.internal`, which resolves to the internal IP address used by the host. But when it was tested just works from Docker Guest >> Docker Host (one direction only). Ref: see [Docker Docs I cannot ping my containers](https://docs.docker.com/docker-for-mac/networking/#i-cannot-ping-my-containers)
+**Note**: Since 17.12 onwards the recommendation is to connect to the special Mac-only DNS name `docker.for.mac.host.internal`, which resolves to the internal IP address used by the host. But at the moment it was tested, it just worked from Docker Guest >> Docker Host (one direction only). Ref: see [Docker Docs I cannot ping my containers](https://docs.docker.com/docker-for-mac/networking/#i-cannot-ping-my-containers)
 
 ## Boot Mesos + Marathon
 
