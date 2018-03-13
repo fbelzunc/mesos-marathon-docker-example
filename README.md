@@ -15,6 +15,15 @@ The command to obtain this variable may vary depending on your docker setup.
 export DOCKER_IP="$(docker run --rm -t --net=host alpine ip addr show docker0 | grep 'inet ' | awk '{print $2}' | cut -f1  -d'/')"
 ```
 
+### IMPORTANT: Docker for mac
+
+Use special Mac-only DNS name `docker.for.mac.localhost` which will resolve to the internal IP address used by the host. It works from Docker Guest <> Docker Host (biderectional)
+
+```bash
+export DOCKER_IP=docker.for.mac.localhost
+```
+**Note**: Since 17.12 onwards the recommendation is to connect to the special Mac-only DNS name `docker.for.mac.host.internal`, which resolves to the internal IP address used by the host. But when it was tested just works from Docker Guest >> Docker Host (one direction only). Ref: see [Docker Docs I cannot ping my containers](https://docs.docker.com/docker-for-mac/networking/#i-cannot-ping-my-containers)
+
 ## Boot Mesos + Marathon
 
 ```bash
