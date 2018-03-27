@@ -64,3 +64,14 @@ Or directly from the browser under
 
 * http://localhost:7771
 * http://localhost:7767
+
+## Test Palace JNLP Agent
+
+```bash
+curl -X POST \
+	-H "Authorization: Basic YWRtaW46YWRtaW4=" \
+	-H "Content-type: application/json" \
+	-H "X-Account: cjoc" \
+	-H "X-Signature: hPaAo9QZ1GuJBoB1nsvsFiWXqW+MwW1lKHVvn4dKmk9hqvkX4ZO8MGRhZfjrj+ue15wdhJiMGNlw5EzSO0275r5abfA1Buk6gTF35SKgcc8gTfAdkV3m+OJbnVA+H9OkwqUVs9K35xI05wy+id3tR+qnm5NgDDnVK7WeRqNWIjUkz1LgUunyEI1IYwNJwghb/NvPW2ecX3XGTH7GwEteMINaETnHDoNjdLJQYzIRQitk2d+lX06kyeTpQe3DN19Fktiv48TqExa5pJNAwznF8SwkInPIuwJqqZVyEKaiQ/fKLldj+etsCdPmcxDE4CECgAC/ZKwwTI12yPFbEWyGlg==" \
+	http://localhost:6060/v1/slave -d @palaceJenkinsJnlp.json
+```
