@@ -64,3 +64,46 @@ Or directly from the browser under
 
 * http://localhost:7771
 * http://localhost:7767
+
+## Test Jenkins JNLP Agent
+
+### Pre-Requisites
+
+You need to have:
+
+* Jenkins running on the host with the Jenkins URL set up - for example `jenkins.example.com`
+* Jenkins URL set up in the hosts `/etc/hosts`:
+    ```bash
+  127.0.0.1		jenkins.example.com
+    ```
+* A JNLP node created in Jenkins with the name "my-jenkins-agent"
+    ```xml
+  <slave>
+    <name>my-mesos-agent</name>
+    <description/>
+    <remoteFS>/jenkins</remoteFS>
+    <numExecutors>1</numExecutors>
+    <mode>NORMAL</mode>
+    <retentionStrategy class="hudson.slaves.RetentionStrategy$Always"/>
+    <launcher class="hudson.slaves.JNLPLauncher">
+      <workDirSettings>
+        <disabled>false</disabled>
+        <internalDir>remoting</internalDir>
+        <failIfWorkDirIsMissing>false</failIfWorkDirIsMissing>
+      </workDirSettings>
+    </launcher>
+    <label/>
+    <nodeProperties/>
+  </slave>
+    ```
+
+### Deploy Jenkins JNLP Agent
+
+```bash
+# deploy jnlpAgent
+JENKINS_URL=jenkins.example.com JENKINS_AGENT_SECRET=<agentSecret> curl -H "Content-type: application/json" -X POST http://localhost:8080/v2/apps -d @jnlpAgent.json
+```
+
+Check that the agent is connected in Jenkins.
+
+Note: You can get the agent's secret on the node page in Jenkins.
