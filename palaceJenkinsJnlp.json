@@ -1,0 +1,23 @@
+{
+  "memory" : 256.0,
+  "disk" : 0.0,
+  "ports" : 1,
+  "masterName" : "cjoc",
+  "label" : "palace",
+  "container" : {
+    "type" : "DOCKER",
+    "dockerImage" : "java",
+    "parameters" : [ {
+      "key" : "add-host",
+      "value" : "jenkins.example.com:$DOCKER_IP"
+    } ],
+    "networking" : "HOST"
+  },
+  "jenkinsMaster" : "http://jenkins.example.com:8081",
+  "jvmArgs" : "-Xms16m -XX:+UseConcMarkSweepGC -Djava.net.preferIPv4Stack=true",
+  "jnlpArgs" : "-noReconnect",
+  "slaveName" : "my-palace-agent",
+  "slaveSecret" : "5d49e50e62e3b56fa6f9cc79ad0b6be781164959b1f098f4a154110f1918bf6a",
+  "jvmMemory" : 200,
+  "cpus" : 0.1
+}
