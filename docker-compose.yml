@@ -55,6 +55,8 @@ services:
       - MESOS_MASTER=zk://zookeeper:2181/mesos
       - MESOS_SWITCH_USER=0
       - MESOS_CONTAINERIZERS=docker,mesos
+    extra_hosts:
+     - jenkins.example.com:$DOCKER_IP
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup
       - /var/run/docker.sock:/run/docker.sock
