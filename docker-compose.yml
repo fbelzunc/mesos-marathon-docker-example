@@ -21,6 +21,29 @@ services:
       - MESOS_QUORUM=1
       - MESOS_REGISTRY=in_memory
 
+  palace:
+    image: cloudbees/pse-palace:2.0.1
+    links:
+     - zookeeper:zk
+     - mesos-leader:master
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      MESOS: zk://zk:2181/mesos
+      HOST: palace
+      PRINCIPAL: principal
+      CREDENTIALS: "admin:admin"
+      JVM_OPTS: "-Xmx1024m -Xms1024m"
+      PUBLIC_KEY: "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxG0jW2pMi5czVVFJsFCOHQpEO0pOoZXk8Z1sWUIJF5tSXceLfHTmUamalzrrhjrdgx/maNUL9tZALhA3urJy4bzLxKPBbAZI4VLh8nMnVlNGJ9yIpGT8x6hb99SCCP9mitYzDkEA17gQJzlqS7Fzzam7k0vDdlvpATsabHspt+8T8yiPlw9rV2Vi0ZVvwPfo/Grz3qoWcBJZ1l67kODYP97Gkju5Y4vyVDjOIYstNb5JrIV8M4T8o92OENr8Bgdcpev3i9+cXzpzQ4xMiJAdt7azoJHOyxjKhAt/QZF51+0EsDXBjIvWPlVqrPE5WZLO+C1qofeey9LdHnNItLoMYwIDAQAB"
+      MESOS_URL: http://mesos-leader:5050
+    ports:
+     - "6060:6060"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://palace:6060/v1/health"]
+      interval: 20s
+      timeout: 10s
+      retries: 2
+
   mesos-agent:
     image: mesosphere/mesos-slave:1.1.0-2.0.107.ubuntu1404
     ports:
