@@ -1,0 +1,23 @@
+{
+  "id": "my-jenkins-agent",
+  "instances": 1,
+  "memory" : 256.0,
+  "cpus" : 0.1,
+  "disk" : 0.0,
+  "container" : {
+    "type" : "DOCKER",
+    "docker": {
+      "image": "jenkinsci/jnlp-slave:3.16-1",
+      // You need the following network  and parameters attributes if Jenkins is running on the host
+      "network": "HOST",
+	    "parameters": [
+	    	{ "key": "add-host", "value": "$JENKINS_URL:$DOCKER_IP" }
+		  ]
+    }
+  },
+  "env":{
+  	"JENKINS_URL":"$JENKINS_URL",
+  	"JENKINS_SECRET": "$JENKINS_AGENT_SECRET",
+  	"JENKINS_AGENT_NAME": "my-jenkins-agent"
+  }
+}
