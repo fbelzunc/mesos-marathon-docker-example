@@ -8,7 +8,6 @@
     "type" : "DOCKER",
     "docker": {
       "image": "jenkinsci/jnlp-slave:3.16-1",
-      // You need the following network  and parameters attributes if Jenkins is running on the host
       "network": "HOST",
       "parameters": [
         { "key": "add-host", "value": "$JENKINS_URL:$DOCKER_IP" }
